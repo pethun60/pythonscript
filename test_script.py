@@ -2,3 +2,6 @@
 
 print("hello world")
 print("and a second message")
+print("and a test")
+print("and a test")
+
