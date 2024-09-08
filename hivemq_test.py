@@ -44,7 +44,7 @@ client.tls_set(tls_version=mqtt.client.ssl.PROTOCOL_TLS)
 # set username and password
 client.username_pw_set("cthunhp", "2RfyNaVkluDZvX")
 # connect to HiveMQ Cloud on port 8883 (default for MQTT)
-client.connect("f93b6bb75f274c849ff9dc514bbd23ad.s1.eu.hivemq.cloud", 8883)
+client.connect("639d486d2818424e8c8442808350cfb2.s1.eu.hivemq.cloud", 8883)
 
 # setting callbacks, use separate functions like above for better visibility
 client.on_subscribe = on_subscribe
@@ -52,11 +52,15 @@ client.on_message = on_message
 client.on_publish = on_publish
 
 # subscribe to all topics of encyclopedia by using the wildcard "#"
-client.subscribe("encyclopedia/#", qos=1)
+client.subscribe("/test/#", qos=1)
+#client.on_subscribe
+
 
 # a single publish, this can also be done in loops, etc.
-client.publish("encyclopedia/temperature", payload="hot", qos=1)
-
+for i in range (0, 10):
+    client.publish("/test/temperature", payload=i, qos=1)
+    print("published ", i)
+    time.sleep(60)
 # loop_forever for simplicity, here you need to stop the loop manually
 # you can also use loop_start and loop_stop
 client.loop_forever()
