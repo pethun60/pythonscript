@@ -38,7 +38,7 @@ def save_from_usb(file_path):
     
     # Copy the file to the USB mount point
     shutil.copy(file_path, source)
-    print(f"File copied from {source}")
+    print(f"File copied from usb {source}")
 
 if __name__ == "__main__":
     # Path to the file you want to save
